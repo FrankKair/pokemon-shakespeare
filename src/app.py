@@ -1,18 +1,20 @@
 from fastapi import FastAPI
-from .pokemon_shakespeare_description import pokemon_shakespeare_description
+from typing import Union
+from .pokemon_shakespeare_description import fancy_description
+
 
 app = FastAPI()
 
 
-@app.get('/pokemon/{pokemon}')
-def pkm_desc(pokemon: str):
+@app.get('/pokemon/{pokemon_id}')
+def pokemon_description(pokemon_id: Union[str, int]):
     """## Summary:
-    Given a pokemon name, you get the pokemon description the way Shakespeare would write it.
+    Given a pokemon name, you get the pokemon description the way Shakespeare would have written it.
 
     Prepare the Pokedex and thy ole English lexicon 👒 🎩
 
     ## Args:
-        pokemon: string
+        pokemon_id: string or integer representing a pokemon
 
     ## Returns:
         { 'name': string, 'description': string }
@@ -23,6 +25,5 @@ def pkm_desc(pokemon: str):
 
         - Pokemon does not exist
     """
-    desc = pokemon_shakespeare_description(pokemon)
-    return {'name': pokemon.lower(), 'description': desc}
-
+    name, desc = fancy_description(pokemon_id)
+    return {'name': name, 'description': desc}

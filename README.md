@@ -1,11 +1,10 @@
 # pokemon-shakespeare
 
-Given a pokemon name, you get the pokemon description the way Shakespeare would write it.
+Given a pokemon name, you get the pokemon description the way Shakespeare would have written it.
 
 👒 Prepare the Pokedex and thy ole English lexicon 🎩
 
-
-## ⚙️  Requirements 
+## ⚙️ Requirements
 
 - 🐳 Docker
 - 🐍 Python3 (local setup)
@@ -17,7 +16,7 @@ Run `$ make build` and then `$ make run` to run the application on port 5000.
 Go ahead and test it :)
 
 ```
-$ curl -X GET localhost:5000/pokemon/charizard
+$ curl localhost:5000/pokemon/charizard
 ```
 
 ## 📖 Documentation
