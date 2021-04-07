@@ -1,6 +1,5 @@
 from fastapi import FastAPI
-from .pokemon_client import pokemon_description
-
+from .pokemon_shakespeare_description import pokemon_shakespeare_description
 
 app = FastAPI()
 
@@ -24,6 +23,6 @@ def pkm_desc(pokemon: str):
 
         - Pokemon does not exist
     """
-    desc = pokemon_description(pokemon)
+    desc = pokemon_shakespeare_description(pokemon)
     return {'name': pokemon.lower(), 'description': desc}
 
