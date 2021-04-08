@@ -1,7 +1,7 @@
 .PHONY: all test clean
 
 test:
-	pytest -vv test
+	pytest -vv src
 
 dev:
 	PYTHON_ENV=development uvicorn main:app --port=5000 --reload
