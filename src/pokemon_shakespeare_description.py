@@ -5,8 +5,8 @@ from .services.shakespeare import get_translation
 
 
 @lru_cache(maxsize=32)
-def fancy_description(pkm_id: str) -> Tuple[str, str]:
-    pokemon = get_pokemon(pkm_id)
+def fancy_description(pkm_name: str) -> Tuple[str, str]:
+    pokemon = get_pokemon(pkm_name)
     desc = ''
     for entry in pokemon.flavor_text_entries:
         if entry.language.name == 'en':

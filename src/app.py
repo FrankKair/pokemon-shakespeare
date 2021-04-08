@@ -6,15 +6,15 @@ from .pokemon_shakespeare_description import fancy_description
 app = FastAPI()
 
 
-@app.get('/pokemon/{pokemon_id}')
-def pokemon_description(pokemon_id: Union[str, int]):
+@app.get('/pokemon/{pokemon_name}')
+def pokemon_description(pokemon_name: str):
     """## Summary:
     Given a pokemon name, you get the pokemon description the way Shakespeare would have written it.
 
     Prepare the Pokedex and thy ole English lexicon 👒 🎩
 
     ## Args:
-        pokemon_id: string or integer representing a pokemon
+        pokemon_name: string
 
     ## Returns:
         { 'name': string, 'description': string }
@@ -25,5 +25,8 @@ def pokemon_description(pokemon_id: Union[str, int]):
 
         - Pokemon does not exist
     """
-    name, desc = fancy_description(pokemon_id)
+    breakpoint()
+    import sys
+    sys.exit(0)
+    name, desc = fancy_description(pokemon_name)
     return {'name': name, 'description': desc}

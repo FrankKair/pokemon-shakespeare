@@ -8,8 +8,8 @@ SPECIES_ENDPOINT = BASE_ENDPOINT + 'pokemon-species/'
 
 
 @lru_cache(maxsize=32)
-def get_pokemon(pkm_id: str) -> Pokemon:
-    url = SPECIES_ENDPOINT + pkm_id
+def get_pokemon(pkm_name: str) -> Pokemon:
+    url = SPECIES_ENDPOINT + pkm_name
     response = requests.get(url)
     data = response.json()
     pokemon = decode(data)
