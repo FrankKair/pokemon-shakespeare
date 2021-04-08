@@ -13,6 +13,8 @@ pydantic==1.8.1
 pyparsing==2.4.7
 pytest==6.2.3
 requests==2.25.1
+responses==0.13.2
+six==1.15.0
 starlette==0.13.6
 toml==0.10.2
 typing-extensions==3.7.4.3
