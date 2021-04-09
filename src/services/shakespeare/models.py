@@ -4,14 +4,14 @@ from typing import Dict, Any
 
 @dataclass(frozen=True)
 class Success:
-   total: int
+    total: int
 
 
 @dataclass(frozen=True)
 class Contents:
-   translated: str
-   text: str
-   translation: str
+    translated: str
+    text: str
+    translation: str
 
 
 @dataclass(frozen=True)

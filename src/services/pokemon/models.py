@@ -28,12 +28,12 @@ def decode(data: Dict[str, Any]) -> Pokemon:
 
     for entry in flavor_text_entries:
         language = NameAndURL(
-                name=entry['language']['name'],
-                url=entry['language']['url'])
+            name=entry['language']['name'],
+            url=entry['language']['url'])
 
         version = NameAndURL(
-                name=entry['version']['name'],
-                url=entry['version']['url'])
+            name=entry['version']['name'],
+            url=entry['version']['url'])
 
         entries.append(
             FlavorTextEntry(

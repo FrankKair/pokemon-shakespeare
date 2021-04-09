@@ -14,4 +14,4 @@ def test_english_description_not_found():
     try:
         _ = get_english_description(p)
     except ValueError:
-        assert True 
+        assert True
