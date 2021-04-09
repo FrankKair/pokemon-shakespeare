@@ -13,6 +13,20 @@ def test_shakespeare_decoder():
     assert result == translation_charizard
 
 
+def test_shakespeare_decoder_fail_empty():
+    try:
+        _ = decode({})
+    except ValueError:
+        assert True
+
+
+def test_shakespeare_decoder_fail_bad_json():
+    try:
+        _ = decode({'data': 'hello', 'data2': 'hello2'})
+    except ValueError:
+        assert True
+
+
 @responses.activate
 def test_shakespeare_cached():
     responses.add(

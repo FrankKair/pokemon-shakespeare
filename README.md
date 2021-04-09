@@ -39,7 +39,7 @@ $ source .venv/bin/activate
 $ pip install -r requirements.txt
 ```
 
-Once you have your [virtual environment](https://docs.python.org/3/tutorial/venv.html) setup, you can run tests and the application via:
+Once you have your [virtual environment](https://docs.python.org/3/tutorial/venv.html) set up, you can run tests and the application via:
 
 ```
 $ make test

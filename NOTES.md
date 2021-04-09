@@ -97,6 +97,18 @@ class PokemonAlternativeImplementation:
     description: str
 ```
 
+### Logging
+
+It's handy to have logging to debug the system.
+
+```python
+import logging
+
+logging.info(...)
+logging.debug(...)
+logging.error(...)
+```
+
 ### External persistence
 
 [Redis](https://redis.io/) could be used to provide external caching (instead of our in-memory counterpart), and a simple database (SQLite?) for persistence. Overkill? 😅
@@ -131,7 +143,7 @@ def get_request(url: str) -> T:
 
 ### Naming convention
 
-The project is structure as this:
+The project is structured as this:
 
 ```
 services/pokemon/client.py, models.py, fixtures.py

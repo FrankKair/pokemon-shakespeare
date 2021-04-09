@@ -46,7 +46,6 @@ def test_input_unknown_pokemon():
     responses.add(
         method=responses.GET,
         url='https://pokeapi.co/api/v2/pokemon-species/testing',
-        json=pokemon_fixtures()['species_charizard'],
         status=404
     )
 

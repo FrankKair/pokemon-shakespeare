@@ -9,6 +9,17 @@ SPECIES_ENDPOINT = BASE_ENDPOINT + 'pokemon-species/'
 
 @lru_cache(maxsize=16)
 def get_pokemon(pkm_name: str) -> Pokemon:
+    """ Given a pokemon name, returns a Pokemon object.
+
+    Args:
+        pkm_name: str
+
+    Returns:
+        Pokemon object with name and flavor_text_entries
+
+    Raises:
+        ValueError if request times out or Pokemon does not exist
+    """
     try:
         url = SPECIES_ENDPOINT + pkm_name
         response = requests.get(url, timeout=5)

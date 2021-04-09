@@ -12,6 +12,20 @@ def test_pokemon_decoder():
     assert result == pokemon_charizard
 
 
+def test_pokemon_decoder_fail_empty():
+    try:
+        _ = decode({})
+    except ValueError:
+        assert True
+
+
+def test_pokemon_decoder_fail_bad_json():
+    try:
+        _ = decode({'data': 'hello', 'data2': 'hello2'})
+    except ValueError:
+        assert True
+
+
 @responses.activate
 def test_pokemon_cached():
     responses.add(

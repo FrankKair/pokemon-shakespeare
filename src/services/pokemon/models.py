@@ -22,25 +22,43 @@ class Pokemon:
 
 
 def decode(data: Dict[str, Any]) -> Pokemon:
-    pkm_name = data['name']
-    flavor_text_entries = data['flavor_text_entries']
-    entries = []
+    """ Maps the PokeAPI call to a Pokemon object.
 
-    for entry in flavor_text_entries:
-        language = NameAndURL(
-            name=entry['language']['name'],
-            url=entry['language']['url'])
+    Args:
+        data: Dict[str, Any] representing the API response
 
-        version = NameAndURL(
-            name=entry['version']['name'],
-            url=entry['version']['url'])
+    Returns:
+        Pokemon object
 
-        entries.append(
-            FlavorTextEntry(
-                flavor_text=entry['flavor_text'],
-                language=language,
-                version=version
+    Raises:
+        ValueError if data is empty or does not contain the necessary key/values
+    """
+    if not data:
+        raise ValueError('Pokemon not found')
+
+    try:
+        pkm_name = data['name']
+        flavor_text_entries = data['flavor_text_entries']
+        entries = []
+
+        for entry in flavor_text_entries:
+            language = NameAndURL(
+                name=entry['language']['name'],
+                url=entry['language']['url'])
+
+            version = NameAndURL(
+                name=entry['version']['name'],
+                url=entry['version']['url'])
+
+            entries.append(
+                FlavorTextEntry(
+                    flavor_text=entry['flavor_text'],
+                    language=language,
+                    version=version
+                )
             )
-        )
 
-    return Pokemon(name=pkm_name, flavor_text_entries=entries)
+        return Pokemon(name=pkm_name, flavor_text_entries=entries)
+
+    except KeyError:
+        raise ValueError('Pokemon not found')
