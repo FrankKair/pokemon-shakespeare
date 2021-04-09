@@ -19,16 +19,11 @@ Go ahead and test it :)
 $ curl localhost:5000/pokemon/charizard
 ```
 
-<!--
-<img src = "https://raw.githubusercontent.com/FrankKair/pokemon-shakespeare/master/assets/example.png?token=ADY3UG7E2HCFG2Y5AJJRQ7LAN6A2K" width="75%" height="75%"/> -->
-
 ![example](assets/example.png)
 
 ## 📖 Documentation
 
 See the documentation at [/docs](http://localhost:5000/docs#/) (needs the app running either on Docker or locally).
-
-<!-- <img src = "https://raw.githubusercontent.com/FrankKair/pokemon-shakespeare/master/assets/docs.png?token=ADY3UGZRJH455BQEYNPYE2TAN6A2I" width="75%" height="75%"/> -->
 
 ![docs](assets/docs.png)
 
@@ -54,6 +49,8 @@ $ make test
 $ make dev
 ```
 
-<!-- <img src = "https://raw.githubusercontent.com/FrankKair/pokemon-shakespeare/master/assets/tests.png?token=ADY3UG47TOVC3PFQ7JN73JLAN6A2M" width="75%" height="75%"/> -->
-
 ![tests](assets/tests.png)
+
+## 📝 Notes & improvements
+
+See the [notes](https://github.com/FrankKair/pokemon-shakespeare/blob/master/NOTES.md) for a longer description of the service, why & how and possible improvements.
