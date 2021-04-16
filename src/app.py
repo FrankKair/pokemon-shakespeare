@@ -1,8 +1,8 @@
 from fastapi import FastAPI, HTTPException, status
 from requests.exceptions import HTTPError
-from .utils import get_english_description
-from .services.pokemon import get_pokemon
-from .services.shakespeare import get_translation
+from .utils import get_english_description, api_error
+from .services.pokemon import get_pokemon, PokemonNotFoundError
+from .services.shakespeare import get_translation, TranslationNotFoundError
 
 
 app = FastAPI()
@@ -23,8 +23,8 @@ async def pokemon_description(pokemon_name: str):
 
     ## Errors:
 
-        - 400: Pokemon does not exist
-        - 400: Description not found
+        - 404: Pokemon does not exist
+        - 404: Description not found
         - 422: Input is not a string
         - 429: Too many requests
     """
@@ -34,10 +34,11 @@ async def pokemon_description(pokemon_name: str):
         translation = get_translation(desc)
         return {'name': pokemon.name, 'description': translation}
 
-    except ValueError as e:
-        raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST, detail=str(e))
+    except PokemonNotFoundError as e:
+        return api_error(status.HTTP_404_NOT_FOUND, e)
+
+    except TranslationNotFoundError as e:
+        return api_error(status.HTTP_404_NOT_FOUND, e)
 
     except HTTPError as e:
-        raise HTTPException(
-            status_code=status.HTTP_429_TOO_MANY_REQUESTS, detail=str(e))
+        return api_error(status.HTTP_429_TOO_MANY_REQUESTS, e)

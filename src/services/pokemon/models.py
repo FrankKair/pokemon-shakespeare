@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 from typing import Dict, List, Any
+from .error import PokemonNotFoundError
 
 
 @dataclass(frozen=True)
@@ -31,10 +32,10 @@ def decode(data: Dict[str, Any]) -> Pokemon:
         Pokemon object
 
     Raises:
-        ValueError if data is empty or does not contain the necessary key/values
+        PokemonNotFoundError if data is empty or does not contain the necessary key/values
     """
     if not data:
-        raise ValueError('Pokemon not found')
+        raise PokemonNotFoundError('Pokemon not found')
 
     try:
         pkm_name = data['name']
@@ -61,4 +62,4 @@ def decode(data: Dict[str, Any]) -> Pokemon:
         return Pokemon(name=pkm_name, flavor_text_entries=entries)
 
     except KeyError:
-        raise ValueError('Pokemon not found')
+        raise PokemonNotFoundError('Pokemon not found')

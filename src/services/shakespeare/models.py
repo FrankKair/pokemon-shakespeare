@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 from typing import Dict, Any
+from .error import TranslationNotFoundError
 
 
 @dataclass(frozen=True)
@@ -30,10 +31,10 @@ def decode(data: Dict[str, Any]) -> Translation:
         Translation object
 
     Raises:
-        ValueError if data is empty or does not contain the necessary key/values
+        TranslationNotFoundError if data is empty or does not contain the necessary key/values
     """
     if not data:
-        raise ValueError('No Shakespeare description found')
+        raise TranslationNotFoundError('No Shakespeare description found')
 
     try:
         return Translation(
@@ -45,4 +46,4 @@ def decode(data: Dict[str, Any]) -> Translation:
             )
         )
     except KeyError:
-        raise ValueError('No Shakespeare description found')
+        raise TranslationNotFoundError('No Shakespeare description found')

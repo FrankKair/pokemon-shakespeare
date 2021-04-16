@@ -20,20 +20,20 @@ def test_input_charizard():
     responses.add(
         method=responses.GET,
         url='https://pokeapi.co/api/v2/pokemon-species/charizard',
-        json=pokemon_fixtures()['species_charizard'],
+        json=pokemon_fixtures['species_charizard'],
         status=200
     )
 
     responses.add(
         method=responses.POST,
         url="https://api.funtranslations.com/translate/shakespeare.json",
-        json=shakespeare_fixtures()['shakespeare_charizard'],
+        json=shakespeare_fixtures['shakespeare_charizard'],
         status=200
     )
 
     mocked_response = {
         'name': 'charizard',
-        'description': shakespeare_fixtures()['translation_charizard'].contents.translated
+        'description': shakespeare_fixtures['translation_charizard'].contents.translated
     }
 
     response = client.get('/pokemon/charizard')
@@ -50,5 +50,5 @@ def test_input_unknown_pokemon():
     )
 
     response = client.get('/pokemon/testing')
-    assert response.status_code == 400
+    assert response.status_code == 404
     assert response.json() == {'detail': 'testing not found'}

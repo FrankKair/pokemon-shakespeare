@@ -3,6 +3,7 @@ from requests.exceptions import HTTPError
 from .models import decode
 from .client import get_translation
 from .fixtures import shakespeare_charizard, translation_charizard, description_charizard
+from .error import TranslationNotFoundError
 
 
 URL = "https://api.funtranslations.com/translate/shakespeare.json"
@@ -16,14 +17,14 @@ def test_shakespeare_decoder():
 def test_shakespeare_decoder_fail_empty():
     try:
         _ = decode({})
-    except ValueError:
+    except TranslationNotFoundError:
         assert True
 
 
 def test_shakespeare_decoder_fail_bad_json():
     try:
         _ = decode({'data': 'hello', 'data2': 'hello2'})
-    except ValueError:
+    except TranslationNotFoundError:
         assert True
 
 
