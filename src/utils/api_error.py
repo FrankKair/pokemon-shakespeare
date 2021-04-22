@@ -1,7 +1,7 @@
 from fastapi import HTTPException 
 
 
-def api_error(status, exception):
+def api_error(status: int, exception: str):
     """ Raises HTTPException with status and message.
 
     Args:

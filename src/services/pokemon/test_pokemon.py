@@ -1,8 +1,8 @@
 import responses
 from .models import decode
 from .client import get_pokemon
-from .fixtures import species_charizard, pokemon_charizard
 from .error import PokemonNotFoundError
+from ...fixtures import species_charizard, pokemon_charizard
 
 
 URL = 'https://pokeapi.co/api/v2/pokemon-species/'
@@ -25,25 +25,6 @@ def test_pokemon_decoder_fail_bad_json():
         _ = decode({'data': 'hello', 'data2': 'hello2'})
     except PokemonNotFoundError:
         assert True
-
-
-@responses.activate
-def test_pokemon_cached():
-    responses.add(
-        method=responses.GET,
-        url=URL + 'charizard',
-        json=species_charizard,
-        status=200
-    )
-
-    p = get_pokemon('charizard')
-    p = get_pokemon('charizard')
-
-    info = get_pokemon.cache_info()
-    assert info.hits == 1
-    assert info.misses == 1
-    assert info.maxsize == 16
-    assert info.currsize == 1
 
 
 @responses.activate

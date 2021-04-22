@@ -1,8 +1,11 @@
 from fastapi.testclient import TestClient
 import responses
 from .app import app
-from .services.pokemon import fixtures as pokemon_fixtures
-from .services.shakespeare import fixtures as shakespeare_fixtures
+from .fixtures import (
+    species_charizard,
+    shakespeare_charizard,
+    translation_charizard
+)
 
 
 client = TestClient(app)
@@ -20,20 +23,20 @@ def test_input_charizard():
     responses.add(
         method=responses.GET,
         url='https://pokeapi.co/api/v2/pokemon-species/charizard',
-        json=pokemon_fixtures['species_charizard'],
+        json=species_charizard,
         status=200
     )
 
     responses.add(
         method=responses.POST,
         url="https://api.funtranslations.com/translate/shakespeare.json",
-        json=shakespeare_fixtures['shakespeare_charizard'],
+        json=shakespeare_charizard,
         status=200
     )
 
     mocked_response = {
         'name': 'charizard',
-        'description': shakespeare_fixtures['translation_charizard'].contents.translated
+        'description': translation_charizard.contents.translated
     }
 
     response = client.get('/pokemon/charizard')
