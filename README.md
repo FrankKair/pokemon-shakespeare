@@ -13,8 +13,6 @@ Given a pokemon name, you get the pokemon description the way Shakespeare would 
 
 Run `$ make build` and then `$ make run` to run the application on port 5000.
 
-Go ahead and test it :)
-
 ```
 $ curl localhost:5000/pokemon/charizard
 ```
@@ -51,6 +49,3 @@ $ make dev
 
 ![tests](assets/tests.png)
 
-## 📝 Notes & improvements
-
-See the [notes](https://github.com/FrankKair/pokemon-shakespeare/blob/master/NOTES.md) for a longer description of the service, why & how and possible improvements.
