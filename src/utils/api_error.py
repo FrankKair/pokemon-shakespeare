@@ -1,4 +1,4 @@
-from fastapi import HTTPException 
+from fastapi import HTTPException
 
 
 def api_error(status: int, exception: str):

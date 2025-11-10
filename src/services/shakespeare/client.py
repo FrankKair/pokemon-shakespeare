@@ -1,6 +1,6 @@
 from functools import lru_cache
 import requests
-from .models import Translation, decode
+from .models import decode
 
 
 BASE_ENDPOINT = "https://api.funtranslations.com/translate/"

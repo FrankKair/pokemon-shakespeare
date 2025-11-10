@@ -1,4 +1,4 @@
-from fastapi import FastAPI, HTTPException, status
+from fastapi import FastAPI, status
 from requests.exceptions import HTTPError
 from .utils import get_english_description, api_error
 from .services.pokemon import get_pokemon, PokemonNotFoundError
