@@ -21,15 +21,16 @@ jobs:
       with:
         python-version: 3.14
 
-    - name: Install dependencies
+    - name: Install UV and dependencies
       run: |
         python -m venv venv
         source venv/bin/activate
         pip install --upgrade pip
-        pip install -r requirements.txt
+        pip install uv
+        uv sync
 
     - name: Run tests
       run: |
         source venv/bin/activate
-        pytest -vv src
+        uv run python -m pytest -vv src
 

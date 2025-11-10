@@ -1,4 +1,4 @@
-# pokemon-shakespeare [![Build Status](https://travis-ci.org/FrankKair/pokemon-shakespeare.svg?branch=master)](https://travis-ci.org/github/FrankKair/pokemon-shakespeare)
+# pokemon-shakespeare
 
 Given a pokemon name, you get the pokemon description the way Shakespeare would have written it.
 
