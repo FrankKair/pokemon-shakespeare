@@ -1,8 +1,17 @@
-# syntax = docker/dockerfile:1.0-experimental
-FROM tiangolo/uvicorn-gunicorn-fastapi:python3.7
-
+FROM python:3.14-slim AS builder
 WORKDIR /app
-COPY ./requirements.txt ./
-COPY ./main.py ./
+RUN apt-get update && apt-get install -y build-essential curl && \
+    rm -rf /var/lib/apt/lists/*
+RUN pip install uv
+COPY pyproject.toml ./
+RUN uv install --no-root
+
+# Smaller runtime image (no build tools)
+FROM python:3.14-slim AS runtime
+WORKDIR /app
+# Copy the installed Python packages from the builder stage
+COPY --from=builder /usr/local/lib/python3.14/site-packages /usr/local/lib/python3.14/site-packages
+COPY ./main.py .
 COPY ./src ./src
-RUN pip install -r requirements.txt
+EXPOSE 5000
+CMD ["uv", "run", "uvicorn", "main:app", "--host", "0.0.0.0", "--port", "5000"]
