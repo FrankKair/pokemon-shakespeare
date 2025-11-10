@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools >= 77.0.3"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pokemon-shakespeare"
+version = "1.0.0"
+dependencies = [
+    "fastapi",
+    "uvicorn",
+    "pytest"
+]
+requires-python = ">=3.13"
+description = "Pokemon descriptions like Shakespeare would have written it."
+readme = "README.md"
+license = "MIT"
