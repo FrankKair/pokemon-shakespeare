@@ -1,4 +1,4 @@
-name: Run tests and build Docker image
+name: Run tests & build Docker image
 
 on:
   push:
@@ -13,26 +13,26 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: 3.14
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.14
 
-    - name: Install UV and dependencies
-      run: |
-        python -m venv venv
-        source venv/bin/activate
-        pip install --upgrade pip
-        pip install uv
-        uv sync
+      - name: Install UV and dependencies
+        run: |
+          python -m venv venv
+          source venv/bin/activate
+          pip install --upgrade pip
+          pip install uv
+          uv sync
 
-    - name: Run tests
-      run: |
-        source venv/bin/activate
-        uv run python -m pytest -vv src
+      - name: Run tests
+        run: |
+          source venv/bin/activate
+          uv run python -m pytest -vv src
 
   build:
     runs-on: ubuntu-latest
