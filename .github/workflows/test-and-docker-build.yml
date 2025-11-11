@@ -1,4 +1,4 @@
-name: Run Tests
+name: Run tests and build Docker image
 
 on:
   push:
@@ -33,4 +33,16 @@ jobs:
       run: |
         source venv/bin/activate
         uv run python -m pytest -vv src
+
+  build:
+    runs-on: ubuntu-latest
+    needs: test
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: |
+          docker build -t pokemon-shakespeare .
 
