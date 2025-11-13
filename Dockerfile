@@ -7,10 +7,8 @@ COPY pyproject.toml ./
 COPY uv.lock ./
 RUN uv sync --python-platform linux --frozen --all-extras
 
-# Smaller runtime image (no build tools)
-FROM python:3.14-slim AS runtime
+FROM python:3.14-slim
 WORKDIR /app
-# Copy the installed Python packages from the builder stage
 COPY --from=builder /usr/local/lib/python3.14/site-packages /usr/local/lib/python3.14/site-packages
 COPY ./main.py .
 COPY ./src ./src
