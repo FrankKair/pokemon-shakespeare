@@ -1,5 +1,7 @@
 # pokemon-shakespeare
 
+[![Build](https://github.com/frankkair/pokemon-shakespeare/actions/workflows/test-and-docker-build.yml/badge.svg)](https://github.com/frankkair/pokemon-shakespeare/actions/workflows/test-and-docker-build.yml)
+
 Given a pokemon name, you get the pokemon description the way Shakespeare would have written it.
 
 👒 Prepare the Pokedex and thy ole English lexicon 🎩
